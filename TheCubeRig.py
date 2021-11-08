@@ -19,7 +19,7 @@ from maya import cmds
 
 #making a cube inside of Maya's General Script editor, to see cubes that can be made.
 cube = cmds.polyCube()
-cubeShape = cube[0]
+shapeCube = cube[0]
 
 
 #making a circle now instead of a cube to see what is madein the general script editor of maya
@@ -30,13 +30,13 @@ circle = cmds.circle()
 #nodes in maya are the objects name, input, output, and the attributes that are used within that node.
 #the same thing happens with cube up above in the code, hence why the first index is being called.
 
-circleShape = circle[0]
+shapeCircle = circle[0]
 
 
 #the function parent will say that the object cupeShape will be a child to circleShape
 #this is also apparent in the Maya program where  if you move the parent object it will move the child object
 #however the child object can still move without the parent object, so we need to lock them in order to prevent this
-cmds.parent(cubeShape,circleShape)
+cmds.parent(shapeCube,shapeCircle)
 
 
 #in Maya, on the channels window with the child object selected, this will allow the user to see the x, y, and z axis' for this object
@@ -46,9 +46,9 @@ cmds.parent(cubeShape,circleShape)
 
 #below allows us to automate the child object so that its always having fixed x, y, and z axises, cannot be rotated by itself, and cannot be scaled by itself.
 #this however does allow the user to rotate, scale, and translate the object based off the parent object
-cmds.setAttr(cubeShape+".translate",lock = True)
-cmds.setAttr(cubeShape+".rotate",lock = True)
-cmds.setAttr(cubeShape+".scale",lock = True)
+cmds.setAttr(shapeCube+".translate",lock = True)
+cmds.setAttr(shapeCube+".rotate",lock = True)
+cmds.setAttr(shapeCube+".scale",lock = True)
 
 
 # this last line allows python to tell Maya that once this script is executed, select the parent object once this script has been run.

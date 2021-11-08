@@ -32,7 +32,7 @@ DEFAULT = "grp"
 # Long is a function in the Maya cmds library that will return the full path for the names of the objects.
 # The other point of using Long is to also tell whether or not objects have a parent child relationship.
 
-# Selection here is our varagin, I'm setting this equal to false currently to let the function know whether or not I would like to use this as an input.
+# Selection here is our vargin, I'm setting this equal to false currently to let the function know whether or not I would like to use this as an input.
 
 def rename(selection=False):
     #Using a docstring that way if a user uses the help function it will return this helpful description, telling them what our function does.
