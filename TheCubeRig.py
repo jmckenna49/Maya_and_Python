@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Nov  7 17:40:41 2021
+
+@author: james mckenna
+"""
 from maya import cmds
 
 
