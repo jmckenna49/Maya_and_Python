@@ -35,6 +35,7 @@ DEFAULT = "grp"
 # Selection here is our varagin, I'm setting this equal to false currently to let the function know whether or not I would like to use this as an input.
 
 def rename(selection=False):
+    #Using a docstring that way if a user uses the help function it will return this helpful description, telling them what our function does.
     """
     Renames objects by adding suffixes based on the object type
     Args:
@@ -48,11 +49,11 @@ def rename(selection=False):
 
 
     # The ls function also takes an input called selection, and we can just pass that through.
-    objects = cmds.ls(selection=selection, dag=True)
+    objects = cmds.ls(selection=selection, dag=True, long=True)
 
-    # Now if we are trying to use the selection and nothing is selected, lets give an error.
+    # Now if we are trying to use the selection and nothing is selected or object is empty, lets give an error. The function will not run if there is no selection and no objects.
     if selection and not objects:
-        raise RuntimeError("You don't have anything selected")
+        raise RuntimeError("You don't have anything selected! How dare you?!")
 
     # Now we need to sort our items from longest to shortest again so that we don't rename parents before children
     objects.sort(key=len, reverse=True)
@@ -85,14 +86,14 @@ def rename(selection=False):
             continue
 
         # Now we'll make the new name using string formatting
-        # Instead of using the + symbol, we can use the %s symbol to insert strings
+        # Instead of using the + symbol, we can use the %s symbol to insert strings, which is called string substitution.
         newName = '%s_%s' % (shortName, suffix)
         cmds.rename(shortName, newName)
 
-        # Now we find where in the list of objects our current object is
+        # Now we find where in the list of objects our current object is by grabbing the index value in our list.
         index = objects.index(obj)
 
-        # Then we replace it in the list with the name of the new object
+        # Then we replace it in the list with the name of the new object, it will look at the current object, and replace that name with the new name we wanted for that object.
         objects[index] = obj.replace(shortName, newName)
 
     # Finally we return the list back to the user of our function
