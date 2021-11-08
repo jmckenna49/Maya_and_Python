@@ -4,7 +4,12 @@ from maya import cmds
 #below is a piece of code I made inside of Maya's General Script Editor.
 #I'm commenting this piece of code just so that's easier to follow along without having to have maya up and running.
 #this piece of code does need to be run inside of maya in order for it to be read and executed appropriately.
-#an api for maya can also make use of this code as well, however I haven't used the api just yet; so I'm making the code via the general script editor in maya with python.
+#I know Python can access both the cmds and OpenMaya API, however currently, I've only begun using Python inside of Maya's General Editor.
+#I'll hopefully be accessing and using the API as a become more aware and focused on the code itself.
+
+
+
+
 
 #making a cube inside of Maya's General Script editor, to see cubes that can be made.
 cube = cmds.polyCube()
