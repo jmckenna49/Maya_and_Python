@@ -1,3 +1,5 @@
+import pdb
+
 class ArrayReverser:
     def __init__(self, array):
         self.array = array
