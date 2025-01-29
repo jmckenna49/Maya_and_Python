@@ -8,7 +8,7 @@ def two_sum(nums, target):
     for i in range(n):
         # Calculate the complement
         complement = target - nums[i]
-        pdb.set_trace()
+        
         # Check if the complement exists in the dictionary
         if complement in num_dict:
             return [num_dict[complement], i]
