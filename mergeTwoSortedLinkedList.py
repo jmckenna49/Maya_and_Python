@@ -43,6 +43,60 @@
 #
 # We return `dummy.next`, which points to the first real node in the merged list (`1`).
 
+
+
+# DETAILED EXAMPLE OF DUMMY AND TAIL:
+# Step-by-Step Walkthrough:
+# Initial Setup:
+
+# dummy is created: dummy -> null
+# tail points to dummy: tail -> dummy -> null
+# First Iteration (Compare l1.value = 1 and l2.value = 2):
+
+# Since 1 < 2, we set tail.next to l1:
+# tail.next = l1  # tail.next -> 1 (from l1)
+# l1 = l1.next    # Move l1 to the next node: l1 -> 3 -> 5
+
+# Now, tail moves to tail.next (the node we just added):
+# tail = tail.next  # tail -> 1
+
+# List so far:
+# dummy -> 1 -> null
+# tail points to 1.
+
+
+# Second Iteration (Compare l1.value = 3 and l2.value = 2):
+
+# Since 2 < 3, we set tail.next to l2:
+# tail.next = l2  # tail.next -> 2 (from l2)
+# l2 = l2.next    # Move l2 to the next node: l2 -> 4 -> 6
+# Now, tail moves to tail.next (the node we just added):
+# tail = tail.next  # tail -> 2
+# List so far:
+
+# dummy -> 1 -> 2 -> null
+# tail points to 2.
+# Third Iteration (Compare l1.value = 3 and l2.value = 4):
+
+# Since 3 < 4, we set tail.next to l1:
+# tail.next = l1  # tail.next -> 3 (from l1)
+# l1 = l1.next    # Move l1 to the next node: l1 -> 5
+# Now, tail moves to tail.next (the node we just added):
+# tail = tail.next  # tail -> 3
+# List so far:
+
+# dummy -> 1 -> 2 -> 3 -> null
+# tail points to 3.
+# Continue Iterations:
+
+# The process continues in the same way, with tail.next being updated to the next node in l1 or l2, and then tail moving forward.
+# Final Merged List:
+
+# After all iterations, we’ll have a merged list:
+# dummy -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> null
+# Finally, we return dummy.next, which points to the first real node in the merged list (node with value 1).
+
+
 class ListNode:
     def __init__(self, value=0, next=None):
         self.value = value
@@ -50,7 +104,7 @@ class ListNode:
 
 def mergeTwoLists(l1, l2):
     dummy = ListNode() #creates an empty list
-    tail = dummy # pointer to the end, this is empty now
+    tail = dummy # pointer to the same empty node now, so when we return dummy we're returning the head since dummy is a place holder that doesn't change
     
     while l1 and l2:
         if l1.value < l2.value:
