@@ -1,9 +1,11 @@
+import pdb
 def reverse_number(n):
     is_negative = n < 0  # Check if number is negative
     n = abs(n)  # Work with absolute value
 
     reversed_num = 0
     while n > 0:
+        pdb.set_trace()
         digit = n % 10  # Get the last digit
         reversed_num = reversed_num * 10 + digit  # Append digit to reversed number
         n //= 10  # Remove last digit
